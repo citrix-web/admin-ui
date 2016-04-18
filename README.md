@@ -1,2 +1,18 @@
-# admin-ui
-Admin UI for sending messages to users.
+# Admin UI
+Notification Center's Admin UI for Hack Week 2016.
+
+### Usage
+
+```
+npm install
+npm start
+Open http://localhost:5000
+```
+
+### Linting
+
+ESLint with React linting options have been enabled.
+
+```
+npm run lint
+```
