@@ -1,0 +1,56 @@
+.admin-center {
+
+    .box {
+        width: 30*$r;
+        padding: 1*$r 2*$r 1.5*$r 2*$r;
+        border-radius: .25*$r;
+        height: 335px; // TODO inherit height
+    }
+
+    .admin-form {
+        background: $color-white;
+        border: 1px solid darken($color-gray, 5%);
+        animation: fadeInScale .33s;
+    }
+
+    .admin-sending {
+        background: $color-green;
+        color: $color-white;
+        text-align: center;
+    }
+
+    h2, h3, textarea, select {
+        margin-bottom: 1.5*$r;
+    }
+
+    label {
+        margin-bottom: .5*$r;
+    }
+
+    option {
+        -webkit-appearance: none;
+    }
+
+    .dropdown {
+        display: inline-block;
+        width: 48%;
+        &:first-of-type {
+            margin-right: 16px;
+        }
+    }
+
+    .btn i {
+        margin-right: .33*$r;
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(.85);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

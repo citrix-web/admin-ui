@@ -1,5 +1,9 @@
-@import 'test';
+@import 'globals';
+@import 'admin-center';
 
-  p {
-      color: red;
-  }
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $color-gray;
+}
