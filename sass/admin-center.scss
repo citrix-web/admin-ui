@@ -42,6 +42,32 @@
     .btn i {
         margin-right: .33*$r;
     }
+
+    .logged-in {
+        position: absolute;
+        top: 1.5*$r;
+        right: 2*$r;
+
+        .avatar {
+            display: inline-block;
+            height: $r;
+            width: $r;
+            border-radius: $r/2;
+            background: url(https://dl.dropboxusercontent.com/u/228089/avatar.png);
+            background-size: $r;
+            margin-right: .33*$r;
+        }
+
+        a {
+            display: inline-block;
+            vertical-align: text-bottom;
+        }
+
+        i {
+            font-size: .66*$r;
+            opacity: .5;
+        }
+    }
 }
 
 @keyframes fadeInScale {

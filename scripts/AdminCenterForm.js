@@ -56,20 +56,29 @@ export default class AdminCenterForm extends Component {
 	render() {
 		return (
          <div className="admin-center">
-   			<div className="messageFormContainer admin-form box">
-   				<h3 className="sendMessageTitle">Send Notification</h3>
-   				<form className="createMessageForm form-group" onSubmit={this.sendMessage}>
-   		    		<textarea
-   		    			placeholder="Please enter your message here."
-   		    			className="messageInput form-control"
-   		    			onChange={this.handleMessageChanged}
-   		    			value={this.state.message}
-   		    		/>
-   		    		<DropDown name="Group" data={this.state.groups} changeHandler={this.handleGroupChange.bind(this)} />
-   		    		<DropDown name="Category" data={this.state.categories} changeHandler={this.handleCategoryChange.bind(this)}/>
-   			    	<input className="sendButton btn btn-lg btn-primary pull-right" type="submit" value="Send" />
-   				</form>
-   			</div>
+            <div className="logged-in">
+               <span className="avatar">&nbsp;</span>
+               <a href="#">Tim Lange <i className="fa fa-chevron-down" aria-hidden="true"></i></a>
+            </div>
+            <div>
+      			<div className="messageFormContainer admin-form box">
+      				<h3 className="sendMessageTitle">Send Notification</h3>
+      				<form className="createMessageForm form-group" onSubmit={this.sendMessage}>
+      		    		<textarea
+      		    			placeholder="Please enter your message here."
+      		    			className="messageInput form-control"
+      		    			onChange={this.handleMessageChanged}
+      		    			value={this.state.message}
+      		    		/>
+      		    		<DropDown name="Group" data={this.state.groups} changeHandler={this.handleGroupChange.bind(this)} />
+      		    		<DropDown name="Category" data={this.state.categories} changeHandler={this.handleCategoryChange.bind(this)}/>
+                     <div className="clearfix">
+                       <a className="btn btn-lg btn-primary pull-right" href="#" role="button">
+                         <i className="fa fa-share" aria-hidden="true"></i>Send</a>
+                     </div>
+      				</form>
+      			</div>
+            </div>
          </div>
 		);
 	};
