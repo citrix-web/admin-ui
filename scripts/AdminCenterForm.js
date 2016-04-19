@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import DropDown from './DropDown';
 import {bindAll} from 'lodash';
+import '../sass/index.scss';
 
 export default class AdminCenterForm extends Component {
 
@@ -24,7 +25,7 @@ export default class AdminCenterForm extends Component {
   	};
 
   	handleGroupChange(selectedGroup) {
-  		this.setState({selectedGroup}); 
+  		this.setState({selectedGroup});
   	};
 
   	handleCategoryChange(selectedCategory) {
@@ -54,21 +55,22 @@ export default class AdminCenterForm extends Component {
 
 	render() {
 		return (
-			<div className="messageFormContainer">
-				<h3 className="sendMessageTitle">Send Notification</h3>
-				<form className="createMessageForm"  onSubmit={this.sendMessage}>
-		    		<input 
-		    			type="textarea"
-		    			placeholder="Please enter your message here."
-		    			className="messageInput"
-		    			onChange={this.handleMessageChanged}
-		    			value={this.state.message}
-		    		/>
-		    		<DropDown name="Group" data={this.state.groups} changeHandler={this.handleGroupChange.bind(this)} />
-		    		<DropDown name="Category" data={this.state.categories} changeHandler={this.handleCategoryChange.bind(this)}/>
-			    	<input className="sendButton" type="submit" value="Send" />
-				</form>
-			</div>
+         <div className="admin-center">
+   			<div className="messageFormContainer admin-form box">
+   				<h3 className="sendMessageTitle">Send Notification</h3>
+   				<form className="createMessageForm form-group" onSubmit={this.sendMessage}>
+   		    		<textarea
+   		    			placeholder="Please enter your message here."
+   		    			className="messageInput form-control"
+   		    			onChange={this.handleMessageChanged}
+   		    			value={this.state.message}
+   		    		/>
+   		    		<DropDown name="Group" data={this.state.groups} changeHandler={this.handleGroupChange.bind(this)} />
+   		    		<DropDown name="Category" data={this.state.categories} changeHandler={this.handleCategoryChange.bind(this)}/>
+   			    	<input className="sendButton btn btn-lg btn-primary pull-right" type="submit" value="Send" />
+   				</form>
+   			</div>
+         </div>
 		);
 	};
 }

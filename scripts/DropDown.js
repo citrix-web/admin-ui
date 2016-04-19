@@ -24,7 +24,7 @@ export default class DropDown extends Component {
         );
     });
 
-    return React.createElement("span", {className: "dropDownContainer"},
+    return React.createElement("div", {className: "dropDownContainer"},
         React.createElement(
           'label',
           {className: "dropDownLabel"},
@@ -32,7 +32,7 @@ export default class DropDown extends Component {
         ),
         React.createElement(
           'select',
-          {onChange: this.handleChange, className: "dropDown"},
+          {onChange: this.handleChange, className: "dropDown form-control"},
           options
         )
     );
