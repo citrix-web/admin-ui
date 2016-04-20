@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import DropDown from './DropDown';
+import ActionButton from './ActionButton';
 import {bindAll} from 'lodash';
 import '../../sass/index.scss';
 
@@ -7,6 +8,12 @@ export default class AdminCenterForm extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      actionButton: {
+        name: 'Send',
+        status: 'failure'
+      }
+    };
     bindAll(this, [
       'handleGroupChange',
       'handleCategoryChange',
@@ -17,8 +24,9 @@ export default class AdminCenterForm extends Component {
 
   sendMessage(e) {
     e.preventDefault();
-    this.setState({message: ""});
-
+    this.setState({
+      message: ""
+    });
     // << to be replaced by the redux code >>
   };
 
@@ -79,10 +87,11 @@ export default class AdminCenterForm extends Component {
               <DropDown name="Category" data={this.state.categories}
                         changeHandler={this.handleCategoryChange.bind(this)}/>
               <div className="clearfix">
-                <a className="btn btn-lg btn-primary pull-right" href="#" role="button">
-                  <i className="fa fa-share" aria-hidden="true"></i>
-                  Send
-                </a>
+                <ActionButton 
+                  name={this.state.actionButton.name} 
+                  status={this.state.actionButton.status} 
+                  clickHandler={this.sendMessage.bind(this)}
+                />
               </div>
             </form>
           </div>

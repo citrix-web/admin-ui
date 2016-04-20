@@ -5,8 +5,6 @@ export default class DropDown extends Component {
   constructor(props) {
     super(props);
     this.state = {};
-    this.state.options = this.props.data.options;
-    this.state.name = props.data.name;
     this.handleChange = this.handleChange.bind(this);
   };
 
@@ -16,7 +14,7 @@ export default class DropDown extends Component {
 
   render() {
     var i = 0;
-    var options = this.state.options.map(function (option) {
+    var options = this.props.data.options.map(function (option) {
       return React.createElement(
         'option',
         {
