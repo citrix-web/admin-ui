@@ -1,8 +1,8 @@
 import React from 'react';
 import {render} from 'react-dom';
-import AdminCenterForm from './AdminCenterForm';
+import AdminCenterForm from './components/AdminCenterForm';
 
 render(
   <AdminCenterForm />,
-  document.getElementById('adminCenterForm')
+  document.getElementById('admin-center-form')
 );

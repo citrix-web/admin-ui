@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import DropDown from './DropDown';
 import {bindAll} from 'lodash';
-import '../sass/index.scss';
+import '../../sass/index.scss';
 
 export default class AdminCenterForm extends Component {
 
