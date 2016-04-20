@@ -66,6 +66,7 @@ export default class AdminCenterForm extends Component {
       				<h3 className="sendMessageTitle">Send Notification</h3>
       				<form className="createMessageForm form-group" onSubmit={this.sendMessage}>
       		    		<textarea
+                        maxLength="160"
       		    			placeholder="Please enter your message here."
       		    			className="messageInput form-control"
       		    			onChange={this.handleMessageChanged}

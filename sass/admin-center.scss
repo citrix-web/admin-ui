@@ -4,7 +4,7 @@
         width: 30*$r;
         padding: 1*$r 2*$r 1.5*$r 2*$r;
         border-radius: .25*$r;
-        height: 335px; // TODO inherit height
+        height: 325px;
     }
 
     .admin-form {
@@ -19,8 +19,16 @@
         text-align: center;
     }
 
-    h2, h3, textarea, select {
+    .createMessageForm {
+        position: relative;
+    }
+
+    h2, h3, select {
         margin-bottom: 1.5*$r;
+    }
+
+    textarea {
+        margin-bottom: .75*$r;
     }
 
     label {
@@ -41,6 +49,15 @@
 
     .btn i {
         margin-right: .33*$r;
+    }
+
+    .character-count {
+        position: absolute;
+        margin-top: -39px;
+        right: 0px;
+        font-size: 12px;
+        text-align: right;
+        color: lighten($color-black, 66%);
     }
 
     .logged-in {
