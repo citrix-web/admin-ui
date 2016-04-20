@@ -1,15 +1,23 @@
-/* eslint-disable no-var, strict */
 var webpack = require('webpack');
-var WebpackDevServer = require('webpack-dev-server');
+var webpackDevMiddleware = require('webpack-dev-middleware');
+var webpackHotMiddleware = require('webpack-hot-middleware');
 var config = require('./webpack.config');
 
-new WebpackDevServer(webpack(config), {
-  publicPath: config.output.publicPath,
-  hot: true,
-  historyApiFallback: true
-}).listen(5000, 'localhost', function (err) {
-    if (err) {
-      console.log(err);
-    }
-    console.log('Listening at localhost:5000');
-  });
+var app = new (require('express'))();
+var port = 5000;
+
+var compiler = webpack(config);
+app.use(webpackDevMiddleware(compiler, {noInfo: true, publicPath: config.output.publicPath}));
+app.use(webpackHotMiddleware(compiler));
+
+app.get("/", function (req, res) {
+  res.sendFile(__dirname + '/index.html')
+});
+
+app.listen(port, function (error) {
+  if (error) {
+    console.error(error)
+  } else {
+    console.info("==> 🌎  Listening on port %s. Open up http://localhost:%s/ in your browser.", port, port)
+  }
+});
