@@ -48,6 +48,7 @@ export default class AdminCenterForm extends Component {
           <form className="createMessageForm form-group">
               <textarea placeholder="Please enter your message here."
                         className="messageInput form-control"
+                        maxLength="140"
                         value={msg}
                         onChange={::this.onMessageChange}>
               </textarea>
