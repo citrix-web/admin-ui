@@ -20,7 +20,8 @@
   "homepage": "",
   "dependencies": {
     "classnames": "^2.2.0",
-    "isomorphic-fetch": "2.2.1"
+    "isomorphic-fetch": "2.2.1",
+    "superagent": "^1.8.3"
   },
   "peerDependencies": {
     "redux": "^2.0.0 || ^3.0.0",
