@@ -4,15 +4,16 @@ import fetch from 'isomorphic-fetch';
  * Publish a notification
  */
 export function notifSend(notif) {
+  console.log('notif', notif)
   return dispatch => {
     fetch(' http://localhost:3000/queue', {
-      method: 'post',
+      method: 'put',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        message: notif.msg,
+        message: notif.message,
         group: notif.group,
         category: notif.category
       })
