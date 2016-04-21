@@ -1,102 +1,78 @@
-import React, {Component} from 'react';
-import DropDown from './DropDown';
-import ActionButton from './ActionButton';
-import {bindAll} from 'lodash';
-import '../../sass/index.scss';
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import ProfileMenu from './ProfileMenu';
+import DropdownMenu from './DropdownMenu';
 
+// React component
 export default class AdminCenterForm extends Component {
-
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
-      actionButton: {
-        name: 'Send',
-        status: 'failure'
-      }
+      msg: '',
+      group: 'HR Group',
+      category: 'Warning'
     };
-    bindAll(this, [
-      'handleGroupChange',
-      'handleCategoryChange',
-      'handleMessageChanged',
-      'sendMessage'
-    ]);
-  };
-
-  sendMessage(e) {
-    e.preventDefault();
-    this.setState({
-      message: ""
-    });
-    // << to be replaced by the redux code >>
-  };
-
-  handleGroupChange(selectedGroup) {
-    this.setState({selectedGroup});
-  };
-
-  handleCategoryChange(selectedCategory) {
-    this.setState({selectedCategory});
-  };
-
-  handleMessageChanged(e) {
-    this.setState({message: e.target.value});
   }
 
-  loadGroups() {
+  onGroupChange(ev) {
+    this.setState({group: ev.target.value});
+  }
 
-    // << to be replaced by the actual redux call >>
-    return [{"name": "HR Group", "description": " This is a HR group."},
-      {"name": "IT Group", "description": " This is a IT group."}];
-  };
+  onCategoryChange(ev) {
+    this.setState({category: ev.target.value});
+  }
 
-  loadCategories() {
+  onMessageChange(ev) {
+    this.setState({msg: ev.target.value});
+  }
 
-    // << to be replaced by the actual redux call >>
-    return [{"name": "Warning"}, {"name": "Information"}, {"name": "Positive"}];
-  };
-
-  componentWillMount() {
-    this.setState({
-      groups: {
-        options: this.loadGroups()
-      },
-      categories: {
-        options: this.loadCategories()
-      }
+  sendNotification() {
+    this.props.notifSend({
+      message: this.state.msg,
+      group: this.state.group,
+      category: this.state.category
     });
-  };
+  }
 
   render() {
+    let { msg, group, category } = this.state;
+    const groups = ['HR Group', 'IT Group'];
+    const categories = ['Warning', 'Information', 'Positive'];
+
     return (
       <div className="admin-center">
-        <div className="logged-in">
-          <span className="avatar">&nbsp;</span>
-          <a href="#">Tim Lange <i className="fa fa-chevron-down" aria-hidden="true"></i></a>
-        </div>
-        <div>
-          <div className="messageFormContainer admin-form box">
-            <h3 className="sendMessageTitle">Send Notification</h3>
-            <form className="createMessageForm form-group" onSubmit={this.sendMessage}>
-              <textarea
-                placeholder="Please enter your message here."
-                className="messageInput form-control"
-                onChange={this.handleMessageChanged}
-                value={this.state.message}
-              />
-              <DropDown name="Group" data={this.state.groups} changeHandler={this.handleGroupChange.bind(this)}/>
-              <DropDown name="Category" data={this.state.categories}
-                        changeHandler={this.handleCategoryChange.bind(this)}/>
-              <div className="clearfix">
-                <ActionButton 
-                  name={this.state.actionButton.name} 
-                  status={this.state.actionButton.status} 
-                  clickHandler={this.sendMessage.bind(this)}
-                />
-              </div>
-            </form>
-          </div>
+        <ProfileMenu name="Tim Lange"/>
+
+        <div className="messageFormContainer admin-form box">
+          <h3 className="sendMessageTitle">Send Notification</h3>
+          <form className="createMessageForm form-group">
+              <textarea placeholder="Please enter your message here."
+                        className="messageInput form-control"
+                        value={msg}
+                        onChange={::this.onMessageChange}>
+              </textarea>
+
+            <DropdownMenu label="Group"
+                          options={groups}
+                          selectedOption={group}
+                          onChangeHandler={::this.onGroupChange}/>
+
+            <DropdownMenu label="Category"
+                          options={categories}
+                          selectedOption={category}
+                          onChangeHandler={::this.onCategoryChange}/>
+
+            <div className="clearfix">
+                <span onClick={::this.sendNotification}>
+                  <a className="btn btn-lg btn-primary pull-right" href="#" role="button">
+                    <i className="fa fa-share" aria-hidden="true"></i>
+                    <span>Send</span>
+                  </a>
+                </span>
+            </div>
+          </form>
         </div>
       </div>
     );
-  };
+  }
 }

@@ -1,22 +1,15 @@
-import { createStore, applyMiddleware } from 'redux'
-import thunkMiddleware from 'redux-thunk'
-import createLogger from 'redux-logger'
-import rootReducer from '../reducers/AdminFormReducer'
+import { Provider, connect } from 'react-redux';
+import { createStore, compose, combineReducers, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import { reducer as notifReducer } from 'admin-ui';
 
-export default function configureStore(initialState) {
-  const store = createStore(
-    rootReducer,
-    initialState,
-    applyMiddleware(thunkMiddleware, createLogger())
-  );
+export default function configureStore() {
+  // Store:
+  const createStoreWithMiddleware = compose(
+    applyMiddleware(thunk)
+  )(createStore);
 
-  //if (module.hot) {
-  //  // Enable Webpack hot module replacement for reducers
-  //  module.hot.accept('../reducers', () => {
-  //    const nextRootReducer = require('../reducers').default;
-  //    store.replaceReducer(nextRootReducer);
-  //  })
-  //}
+  const store = createStoreWithMiddleware(combineReducers({notifs: notifReducer}), {});
 
   return store;
 }

@@ -1,3 +1,5 @@
-dist/*
-node_modules/*
+lib/*
+**/dist/*
 **/node_modules/*
+**/server.js
+**/webpack.config*.js

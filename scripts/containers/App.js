@@ -1,18 +1,19 @@
-import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
-import {sendNotificationSubmit} from '../actions/AdminFormActions';
+import React, { Component } from 'react'
 import AdminCenterForm from '../components/AdminCenterForm';
+import { connect } from 'react-redux';
+import { actions as notifActions } from 'admin-ui';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-  }
+const { notifSend } = notifActions;
 
-  render() {
-    return (
-      <AdminCenterForm />
-    )
-  }
+// Map Redux state to component props
+function mapStateToProps(state) {
+  return {
+    value: state.count
+  };
 }
 
-// export default connect(mapStateToProps)(App)
+// Connected Component:
+export default connect(
+  mapStateToProps,
+  {notifSend}
+)(AdminCenterForm);
