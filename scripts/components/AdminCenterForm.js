@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import ProfileMenu from './ProfileMenu';
 import DropdownMenu from './DropdownMenu';
+import ActionButton from './ActionButton';
 
 // React component
 export default class AdminCenterForm extends Component {
@@ -10,7 +11,10 @@ export default class AdminCenterForm extends Component {
     this.state = {
       msg: '',
       group: 'HR Group',
-      category: 'Warning'
+      category: 'Warning',
+      urlLink: '',
+      actionButtonName: 'Send',
+      actionButtonStatus: ''
     };
   }
 
@@ -26,16 +30,37 @@ export default class AdminCenterForm extends Component {
     this.setState({msg: ev.target.value});
   }
 
+  onUrlLinkChange(ev) {
+    this.setState({urlLink: ev.target.value});
+  }
+
+  onActionButtonStateChange() {
+    this.setState({
+      msg: '',
+      group: 'HR Group',
+      category: 'Warning',
+      urlLink: '',
+      actionButtonName: 'Send',
+      actionButtonStatus: ''
+    });
+    $(".character-count").text("140 characters left.");
+  }
+
   sendNotification() {
     this.props.notifSend({
       message: this.state.msg,
       group: this.state.group,
-      category: this.state.category
+      category: this.state.category,
+      urlLink: this.state.urlLink
+    });
+    this.setState({
+      actionButtonName: 'Sent',
+      actionButtonStatus: 'success'
     });
   }
 
   render() {
-    let { msg, group, category } = this.state;
+    let { msg, group, category, urlLink } = this.state;
     const groups = ['HR Group', 'IT Group'];
     const categories = ['Warning', 'Information', 'Positive'];
 
@@ -57,7 +82,12 @@ export default class AdminCenterForm extends Component {
                 <label className="dropDownLabel">Link</label>
               </div>
 
-              <input className="form-input form-control" type="text" placeholder="Enter URL">
+              <input  className="form-input form-control" 
+                      type="text" 
+                      placeholder="Enter URL"
+                      value={urlLink}
+                      onChange={::this.onUrlLinkChange}
+              >
               </input>
 
             <DropdownMenu label="Group"
@@ -73,12 +103,11 @@ export default class AdminCenterForm extends Component {
 
 
             <div className="clearfix">
-                <span onClick={::this.sendNotification}>
-                  <a className="btn btn-lg btn-primary pull-right" href="#" role="button">
-                    <i className="fa fa-share" aria-hidden="true"></i>
-                    <span>Send</span>
-                  </a>
-                </span>
+                <ActionButton name={this.state.actionButtonName} 
+                              status={this.state.actionButtonStatus} 
+                              onClickHandler={::this.sendNotification}
+                              onActionButtonStateChange={::this.onActionButtonStateChange}
+                />
             </div>
           </form>
         </div>

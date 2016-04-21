@@ -40,10 +40,10 @@
     .dropDownContainer {
         display: inline-block;
         width: 48%;
-
-        &:first-of-type {
-            border: 1px solid red;
+        &:not(:first-of-type) {
+            padding-right: 10px;
         }
+        
     }
 
     .first-level {
