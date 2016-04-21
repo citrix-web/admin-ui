@@ -4,7 +4,9 @@
         width: 30*$r;
         padding: 1*$r 2*$r 1.5*$r 2*$r;
         border-radius: .25*$r;
-        height: 360px;
+        height: 424px;
+        box-shadow: 0 2px 4px rgba(0,0,0,.05);
+        border: 1px solid darken($color-white, 10%);
     }
 
     .admin-form {
@@ -23,12 +25,8 @@
         position: relative;
     }
 
-    h2, h3, select {
+    h2, h3, select, input, textarea {
         margin-bottom: 1.5*$r;
-    }
-
-    textarea {
-        margin-bottom: .75*$r;
     }
 
     label {
@@ -42,18 +40,30 @@
     .dropDownContainer {
         display: inline-block;
         width: 48%;
+
         &:first-of-type {
-            margin-right: 16px;
+            border: 1px solid red;
         }
+    }
+
+    .first-level {
+        border: 1px solid red;
+        margin-right: 16px;
     }
 
     .btn i {
         margin-right: .33*$r;
     }
 
+    .sendMessageTitle {
+        font-family: citrixsans-light;
+        color: darken($color-blue, 10%);
+
+    }
+
     .character-count {
         position: absolute;
-        margin-top: -39px;
+        margin-top: -40px;
         right: 0px;
         font-size: 12px;
         text-align: right;

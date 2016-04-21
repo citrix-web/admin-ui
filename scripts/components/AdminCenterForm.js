@@ -53,6 +53,13 @@ export default class AdminCenterForm extends Component {
                         onChange={::this.onMessageChange}>
               </textarea>
 
+              <div>
+                <label className="dropDownLabel">Link</label>
+              </div>
+
+              <input className="form-input form-control" type="text" placeholder="Enter URL">
+              </input>
+
             <DropdownMenu label="Group"
                           options={groups}
                           selectedOption={group}
@@ -63,11 +70,7 @@ export default class AdminCenterForm extends Component {
                           selectedOption={category}
                           onChangeHandler={::this.onCategoryChange}/>
 
-            <div>
-              <label className="dropDownLabel">Link</label>
-            </div>
-            <input className="form-input" type="text">
-            </input>
+
 
             <div className="clearfix">
                 <span onClick={::this.sendNotification}>
