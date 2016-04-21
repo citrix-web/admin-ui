@@ -13,10 +13,8 @@ export function notifSend(notif) {
       },
       body: JSON.stringify({
         message: notif.msg,
-        messageAttributes: {
-          group: notif.group,
-          category: notif.category
-        }
+        group: notif.group,
+        category: notif.category
       })
     })
       .then(response => {
