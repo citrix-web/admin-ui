@@ -62,6 +62,12 @@ export default class AdminCenterForm extends Component {
                           selectedOption={category}
                           onChangeHandler={::this.onCategoryChange}/>
 
+            <div>
+              <label className="dropDownLabel">Link</label>
+            </div>
+            <input className="form-input" type="text">
+            </input>
+
             <div className="clearfix">
                 <span onClick={::this.sendNotification}>
                   <a className="btn btn-lg btn-primary pull-right" href="#" role="button">
