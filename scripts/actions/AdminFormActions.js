@@ -6,7 +6,7 @@ import fetch from 'isomorphic-fetch';
 export function notifSend(notif) {
   return dispatch => {
     fetch(' http://localhost:3000/queue', {
-      method: 'post',
+      method: 'put',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
