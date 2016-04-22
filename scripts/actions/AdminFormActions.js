@@ -6,18 +6,6 @@ import superagent from 'superagent';
 export function notifSend(notif) {
   console.log('notif', notif)
   return dispatch => {
-    // fetch(' http://localhost:3000/queue', {
-    //   method: 'put',
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //     message: notif.message,
-    //     group: notif.group,
-    //     category: notif.category
-    //   })
-    // })
     superagent.put('http://localhost:3000/queue')
       .send({ message: notif.message, group: notif.group, category: notif.category })
       .end((err,response) => {

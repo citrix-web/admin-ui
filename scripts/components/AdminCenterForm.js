@@ -61,15 +61,15 @@ export default class AdminCenterForm extends Component {
 
   render() {
     let { msg, group, category, urlLink } = this.state;
-    const groups = ['All', 
+    const groups = ['All',
                     'G2M Customers', 'G2M TechOps', 'G2M Admins',
                     'G2A Customers', 'G2A TechOps', 'G2A Admins',
                     'G2W Customers', 'G2W TechOps', 'G2W Admins'];
-    const categories = ['New feature', 'Bug Fix', 'Outage', 'Terms change', 'Other'];
+    const categories = ['New Feature', 'Bug Fix', 'Outage', 'Terms Change', 'World Domination', 'Other'];
 
     return (
       <div className="admin-center">
-        <ProfileMenu name="Tim Lange"/>
+        <ProfileMenu name="Mr. C. E. O."/>
 
         <div className="messageFormContainer admin-form box">
           <h3 className="sendMessageTitle">Send Notification</h3>
@@ -85,8 +85,8 @@ export default class AdminCenterForm extends Component {
                 <label className="dropDownLabel">Link</label>
               </div>
 
-              <input  className="form-input form-control" 
-                      type="text" 
+              <input  className="form-input form-control"
+                      type="text"
                       placeholder="Enter URL"
                       value={urlLink}
                       onChange={::this.onUrlLinkChange}
@@ -106,8 +106,8 @@ export default class AdminCenterForm extends Component {
 
 
             <div className="clearfix">
-                <ActionButton name={this.state.actionButtonName} 
-                              status={this.state.actionButtonStatus} 
+                <ActionButton name={this.state.actionButtonName}
+                              status={this.state.actionButtonStatus}
                               onClickHandler={::this.sendNotification}
                               onActionButtonStateChange={::this.onActionButtonStateChange}
                 />
