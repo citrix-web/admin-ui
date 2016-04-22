@@ -10,8 +10,8 @@ export default class AdminCenterForm extends Component {
     super();
     this.state = {
       msg: '',
-      group: 'HR Group',
-      category: 'Warning',
+      group: 'All',
+      category: 'New feature',
       urlLink: '',
       actionButtonName: 'Send',
       actionButtonStatus: ''
@@ -37,8 +37,8 @@ export default class AdminCenterForm extends Component {
   onActionButtonStateChange() {
     this.setState({
       msg: '',
-      group: 'HR Group',
-      category: 'Warning',
+      group: 'All',
+      category: 'New feature',
       urlLink: '',
       actionButtonName: 'Send',
       actionButtonStatus: ''
@@ -61,8 +61,11 @@ export default class AdminCenterForm extends Component {
 
   render() {
     let { msg, group, category, urlLink } = this.state;
-    const groups = ['HR Group', 'IT Group'];
-    const categories = ['Warning', 'Information', 'Positive'];
+    const groups = ['All', 
+                    'G2M Customers', 'G2M TechOps', 'G2M Admins',
+                    'G2A Customers', 'G2A TechOps', 'G2A Admins',
+                    'G2W Customers', 'G2W TechOps', 'G2W Admins'];
+    const categories = ['New feature', 'Bug Fix', 'Outage', 'Terms change', 'Other'];
 
     return (
       <div className="admin-center">

@@ -95,6 +95,16 @@
             opacity: .5;
         }
     }
+
+    .addNew {
+        float: right;
+        color: #316496;
+        cursor: pointer;
+    }
+
+    .addNewText {
+        padding-right: 5px;
+    }
 }
 
 @keyframes fadeInScale {
